@@ -1,3 +1,57 @@
-<h1>
-  {{title}}
-</h1>
+<div class="ui grid container">
+  <div *ngIf="identity" class="row">
+    <div class="one wide column"></div>
+    <h1>{{title}}</h1>
+    <p>Esta logueado en la aplicación</p>
+  </div>
+  <div *ngIf="identity" class="row">
+    <h1>test</h1>
+  </div>
+</div>
+
+<div class="ui grid container stackable centered" *ngIf='!identity'>
+  <div class="six wide column">
+    <h1>Identificate</h1>
+    <form #loginForm='ngForm' (ngSubmit)="onSubmit()" class="ui form" >
+      <div class="field">
+        <label>Usuario</label>
+        <input type="text" #user="ngModel" [(ngModel)]="usuario.usuario" name="usuario" placeholder="Cuenta de usuario" required>
+        <div *ngIf="!user.valid && user.touched" class="ui pointing label">Por favor, introduzca un usuario </div>
+      </div>
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="password" #password="ngModel" [(ngModel)]="usuario.password" name='password' placeholder="Contraseña" required>
+        <div *ngIf="!password.valid && password.touched" class="ui pointing label">Por favor, introduzca una constraseña </div>
+      </div>
+      <input type='submit' class="ui button" value="Ingresar">
+    </form>
+  </div>
+
+  <div class="ten wide column" *ngIf='identity'>
+    <h1>Registrate</h1>
+    <form class="ui form">
+      <div class="field">
+        <label>Usuario</label>
+        <input type="text" name="first-name" placeholder="Usuario" required>
+      </div>
+      <div class="field">
+        <label>Contraseña</label>
+        <input type="text" name="last-name" placeholder="Contraseña" required>
+      </div>
+      <div class="field">
+        <label>Repite Contraseña</label>
+        <input type="text" name="last-name" placeholder="Contraseña" required>
+      </div>
+      <div class="field">
+        <label>Colaborador</label>
+        <input type="text" name="last-name" placeholder="Colaborador" required>
+      </div>
+      <div class="field">
+        <label>Rol</label>
+        <input type="text" name="last-name" placeholder="Rol" required>
+      </div>
+
+      <button class="ui button" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
