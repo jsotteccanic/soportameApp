@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<div class="ui grid container stackable centered" *ngIf='!identity'>
+<div  class="ui grid container stackable centered" *ngIf='!identity'>
   <div class="six wide column">
     <h1>Identificate</h1>
     <form #loginForm='ngForm' (ngSubmit)="onSubmit()" class="ui form" >
@@ -23,7 +23,7 @@
         <input type="password" #password="ngModel" [(ngModel)]="usuario.password" name='password' placeholder="Contraseña" required>
         <div *ngIf="!password.valid && password.touched" class="ui pointing label">Por favor, introduzca una constraseña </div>
       </div>
-      <input type='submit' class="ui button" value="Ingresar">
+      <input class="fluid ui button green" type='submit' value="Ingresar">
     </form>
   </div>
 
